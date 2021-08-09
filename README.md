@@ -14,3 +14,4 @@ Need to open git bash and run the following command:
 pip install pytest
 ```
 Reload `Pycharm`
+
