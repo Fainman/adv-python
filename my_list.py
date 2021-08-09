@@ -6,6 +6,7 @@ Purpose: Review list
 """
 
 def main():
+
     """Review lists"""
     r = [4, -2, 10, -18, 22]
     # Slicing
