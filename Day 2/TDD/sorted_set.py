@@ -5,6 +5,7 @@ Date   : 8/10/2021
 Purpose: Sorted Set Class
 """
 
+
 class SortedSet:
     def __init__(self, items=None):
         """
@@ -20,6 +21,16 @@ class SortedSet:
     def __len__(self):
         """Length Protocol"""
         return len(self._items)
+
+    def __iter__(self):
+        """Iter Protocol"""
+        return iter(self._items)
+
+    def __getitem__(self, idx):
+        """Index Protocol"""
+        return self._items[idx]
+
+
 
 
 #-------------------------------------------------
