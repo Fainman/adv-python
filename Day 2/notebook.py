@@ -34,40 +34,66 @@ class Notebook:
 
     def __init__(self):
         """Initialize a notebook with an empty list."""
-        pass
+        self._notes = []
 
     def new_note(self, memo, tags=""):
         """Create a new note and add it to the list."""
-        pass
+        self._notes.append(Note(memo, tags))
 
     def _find_note(self, note_id):
         """Locate the note with the given id."""
-        pass
-
+        for note in self._notes:
+            if str(note._id) == str(note_id):
+                return note
 
     def modify_memo(self, note_id, memo):
         """Find the note with the given id and change its
         memo to the given value."""
-        pass
+        note = self._find_note(note_id)
+        # for note in self._notes:
+        #     if note._id == note_id:
+        #         note._memo = memo
+        #         break
+        if note:
+            note._memo = memo
+            return True
+        return False
 
     def modify_tags(self, note_id, tags):
         """Find the note with the given id and change its
         tags to the given value."""
-        pass
+        note = self._find_note(note_id)
+        # for note in self._notes:
+        #     if note._id == note_id:
+        #         note._tags = tags
+        #         break
+        if note:
+            note._tags = tags
+            return True
+        return False
 
     def search(self, filter):
         """Find all notes that match the given filter
         string."""
-        pass
+        return [note for note in self._notes if note.match(filter)]
 
 
 def main():
-    n1 = Note("hello first")
-    n2 = Note("hello again")
-    print(n1._id, n1._memo)
-    print(n2._id, n2._memo)
-    print(n1.match('hello'))
-
+    # n1 = Note("hello first")
+    # n2 = Note("hello again")
+    # print(n1._id, n1._memo)
+    # print(n2._id, n2._memo)
+    # print(n1.match('hello'))
+    n = Notebook()
+    n.new_note('hello world')
+    n.new_note('hello again')
+    print(n._notes)
+    print(n._notes[0]._id)
+    print(n._notes[0]._memo)
+    print(n.search('hello'))
+    print(n.search('world'))
+    n.modify_memo(1, 'hi world')
+    print(n._notes[0]._memo)
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,3 @@
-import sys
 from notebook import Notebook
 
 
@@ -41,9 +40,9 @@ Notebook Menu
 
     def show_notes(self, notes=None):
         if not notes:
-            notes = self.notebook.notes
+            notes = self.notebook._notes
         for note in notes:
-            print("{0}: {1}\n{2}".format(note.id, note.tags, note.memo))
+            print(f'{note._id}: {note._tags}\n{note._memo}')
 
     def search_notes(self):
         filter = input("Search for: ")
