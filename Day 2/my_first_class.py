@@ -4,69 +4,38 @@ Author : John Guerra
 Date   : 8/10/2021
 Purpose:
 """
-
-import argparse
-
-
-# --------------------------------------------------
-def get_args():
-    """Get command-line arguments"""
-
-    parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
-    parser.add_argument('positional',
-                        metavar='str',
-                        help='A positional argument')
-
-    parser.add_argument('-a',
-                        '--arg',
-                        help='A named string argument',
-                        metavar='str',
-                        type=str,
-                        default='')
-
-    parser.add_argument('-i',
-                        '--int',
-                        help='A named integer argument',
-                        metavar='int',
-                        type=int,
-                        default=0)
-
-    parser.add_argument('-f',
-                        '--file',
-                        help='A readable file',
-                        metavar='FILE',
-                        type=argparse.FileType('r'),
-                        default=None)
-
-    parser.add_argument('-o',
-                        '--on',
-                        help='A boolean flag',
-                        action='store_true')
-
-    return parser.parse_args()
+from math import sqrt, dist
 
 
-# --------------------------------------------------
+class Point:
+    def __init__(self, x=0, y=0):
+        self._x = x
+        self._y = y
+
+    def calculate_distance(self, other_point):
+        return sqrt((self._x - other_point._x)**2 +
+                    (self._y - other_point._y)**2)
+
+    def reset(self):
+        self.move(0,0)
+
+    def move(self, x, y):
+        self._x = x
+        self._y = y
+
+
 def main():
     """Make your noise here"""
+    p1 = Point()
+    p2 = Point(-9, 3)
 
-    args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    file_arg = args.file
-    flag_arg = args.on
-    pos_arg = args.positional
+    print(p1._x, p1._y)
+    print(p2._x, p2._y)
+    p2.reset()
+    print(p2._x, p2._y)
+    p2.move(3,3)
+    print(p2._x, p2._y)
+    print(p1.calculate_distance(p2))
 
-    print(f'str_arg = "{str_arg}"')
-    print(f'int_arg = "{int_arg}"')
-    print('file_arg = "{}"'.format(file_arg.name if file_arg else ''))
-    print(f'flag_arg = "{flag_arg}"')
-    print(f'positional = "{pos_arg}"')
-
-
-# --------------------------------------------------
 if __name__ == '__main__':
     main()
