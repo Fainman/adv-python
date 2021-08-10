@@ -30,19 +30,17 @@ def fib_gen():
 
 def main():
     """Make your noise here"""
-    # k_sq_sum = sum(x * x for x in range(1001))
-    # print(k_sq_sum)
-    #
-    # one_k_prime_sum = sum(x for x in range(1001) if is_prime(x))
-    # print(one_k_prime_sum)
-    #
-    # one_k_prime_sum_2 = sum(islice((x for x in count() if is_prime(x)), 1000))
-    # print(one_k_prime_sum_2)
-    print()
-    for idx, fib in enumerate(fib_gen()):
-        print(fib)
-        if idx == 5:
-            break
+    k_sq_sum = sum(x * x for x in range(1001))
+    print(k_sq_sum)
+
+    one_k_prime_sum = sum(x for x in range(1001) if is_prime(x))
+    print(one_k_prime_sum)
+
+    one_k_prime_sum_2 = sum(islice((x for x in count() if is_prime(x)), 1000))
+    print(one_k_prime_sum_2)
+
+
+
 
 # --------------------------------------------------
 if __name__ == '__main__':
