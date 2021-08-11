@@ -96,7 +96,53 @@ class TestSequenceProtocol(unittest.TestCase):
             self.s[-6]
 
     def test_slice_from_start(self):
-        self.assertEqual(self.s[:3], SortedSet[1, 4, 9])
+        self.assertEqual(self.s[:3], SortedSet([1, 4, 9]))
+
+    def test_slice_to_end(self):
+        self.assertEqual(self.s[3:], SortedSet([13, 15]))
+
+    def test_slice_empty(self):
+        self.assertEqual(self.s[30:], SortedSet([]))
+
+    def test_slice_in_middle(self):
+        self.assertEqual(self.s[2:4], SortedSet([9, 13]))
+
+    def test_slice_full(self):
+        self.assertEqual(self.s[:], self.s)
+
+
+class TestReportProtocol(unittest.TestCase):
+    def test_report_empty(self):
+        s = SortedSet([42, 40, 19])
+        self.assertEqual(repr(s), 'SortedSet([19, 40, 42])')
+
+
+class TestEqualityProtocol(unittest.TestCase):
+    def test_positive_equal(self):
+        self.assertTrue(SortedSet([1, 2, 3]) == SortedSet([1, 2, 3]))
+
+    def test_negative_equal(self):
+        self.assertFalse(SortedSet([5, 2, 3]) == SortedSet([1, 2, 3]))
+
+    def test_mismatch(self):
+        self.assertFalse(SortedSet([1, 2, 3]) == [1, 2, 3])
+
+    def test_identical(self):
+        s = SortedSet([1, 2, 3])
+        self.assertTrue(s == s)
+
+    def test_positive_unequal(self):
+        self.assertTrue(SortedSet([1, 2, 3]) != SortedSet([6, 5, 4]))
+
+    def test_negative_unequal(self):
+        self.assertFalse(SortedSet([1, 2, 3]) != SortedSet([1, 2, 3]))
+
+    def test_mismatch_unequal(self):
+        self.assertTrue(SortedSet([1, 2, 3]) != [4, 5, 6])
+
+    def test_identical_unequal(self):
+        s = SortedSet([1, 2, 3])
+        self.assertFalse(s != s)
 
 if __name__ == '__main__':
     unittest.main()
