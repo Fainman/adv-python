@@ -19,7 +19,7 @@ def get_data():
     # Here years and males are values to approximate some function: males = f(years)
     # print(type(males))
     f = interp1d(years, males)
-    new_years = [1896, 1907, 1923, 1929, 1933, 1939, 1947 ,1953, 1969, 1989, 1996, 1998]
+    new_years = [1896, 1907, 1923, 1929, 1933, 1939, 1947, 1953, 1969, 1989, 1996, 1998]
     new_males = f(new_years)
     print(new_males)
 
