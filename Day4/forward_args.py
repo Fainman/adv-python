@@ -39,7 +39,7 @@ def test_tables():
 # --------------------------------------------------
 def main():
     """Make your noise here"""
-    # test_trace()
+    test_trace()
     test_tables()
 
 
